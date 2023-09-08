@@ -15,9 +15,13 @@ class SystemInfoPlugin : Plugin() {
     }
 
     @PluginMethod
+    fun getInfos(call: PluginCall) {
+        call.resolve(implementation?.getInfos())
+    }
+
+    @PluginMethod
     fun start(call: PluginCall) {
-        val res = implementation?.start()
-        call.resolve(res)
+        implementation?.start()
     }
 
     @PluginMethod

@@ -2,6 +2,10 @@
 
 Get access to every info about the device software and hardware!
 
+Supported Android version: `21+`\
+Supported iOS version: `Not supported`\
+Supported Browsers: `Chromium-based`
+
 ## Install
 
 ```bash
@@ -9,13 +13,65 @@ npm install @danyalwe/capacitor-systeminfo
 npx cap sync
 ```
 
+## Todos
+
+- [ ] Improve documentation, add JSDoc strings
+- [ ] Add support for iOS
+- [ ] Add CPU usage
+
+## Supported methods
+
+| Name               | Android | iOS | Web |
+| :----------------- | :------ | :-- | :-- |
+| getInfos           | ✅      | ❌  | ✅  |
+| start              | ✅      | ❌  | ❌  |
+| stop               | ✅      | ❌  | ❌  |
+| addListener        | ✅      | ❌  | ❌  |
+| removeAllListeners | ✅      | ❌  | ❌  |
+
+## Supported properties
+
+| SoftwareInfos           | Android | iOS | Web |
+| :---------------------- | :------ | :-- | :-- |
+| **`osName`**            | ✅      | ❌  | ✅  |
+| **`osVersion`**         | ✅      | ❌  | ✅  |
+| **`brandName`**         | ✅      | ❌  | ✅  |
+| **`sdkVersion`**        | ✅      | ❌  | ❌  |
+| **`sdkName`**           | ✅      | ❌  | ❌  |
+| **`securityPatch`**     | ✅      | ❌  | ❌  |
+| **`uiVersion`**         | ✅      | ❌  | ❌  |
+| **`deviceID`**          | ✅      | ❌  | ❌  |
+| **`boardName`**         | ✅      | ❌  | ❌  |
+| **`bootloaderVersion`** | ✅      | ❌  | ❌  |
+| **`supportedABIs`**     | ✅      | ❌  | ❌  |
+
+| HardwareInfos       | Android | iOS | Web |
+| :------------------ | :------ | :-- | :-- |
+| **`manufacturer`**  | ✅      | ❌  | ✅  |
+| **`features`**      | ✅      | ❌  | ✅  |
+| **`totalCores`**    | ✅      | ❌  | ✅  |
+| **`totalRAM`**      | ✅      | ❌  | ✅  |
+| **`totalHDD`**      | ✅      | ❌  | ✅  |
+| **`totalSD`**       | ✅      | ❌  | ❌  |
+| **`modelID`**       | ✅      | ❌  | ❌  |
+| **`modelCodeName`** | ✅      | ❌  | ❌  |
+| **`cpuModel`**      | ✅      | ❌  | ❌  |
+| **`cpuCores`**      | ✅      | ❌  | ❌  |
+
+| RuntimeInfos  | Android | iOS | Web |
+| :------------ | :------ | :-- | :-- |
+| **`usedRAM`** | ✅      | ❌  | ❌  |
+| **`usedHDD`** | ✅      | ❌  | ❌  |
+| **`usedSD`**  | ✅      | ❌  | ❌  |
+
 ## API
 
 <docgen-index>
 
+* [`getInfos()`](#getinfos)
 * [`start()`](#start)
 * [`stop()`](#stop)
-* [`addListener('runTimeChange', ...)`](#addlistenerruntimechange)
+* [`addListener('runtimeChange', ...)`](#addlistenerruntimechange)
 * [`removeAllListeners()`](#removealllisteners)
 * [Interfaces](#interfaces)
 * [Type Aliases](#type-aliases)
@@ -25,13 +81,22 @@ npx cap sync
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
-### start()
+### getInfos()
 
 ```typescript
-start() => Promise<SystemInformations | undefined>
+getInfos() => Promise<SystemInformations>
 ```
 
 **Returns:** <code>Promise&lt;<a href="#systeminformations">SystemInformations</a>&gt;</code>
+
+--------------------
+
+
+### start()
+
+```typescript
+start() => Promise<void>
+```
 
 --------------------
 
@@ -45,16 +110,16 @@ stop() => Promise<void>
 --------------------
 
 
-### addListener('runTimeChange', ...)
+### addListener('runtimeChange', ...)
 
 ```typescript
-addListener(eventName: 'runTimeChange', listenerFunc: (event: RunTimeInfos) => void) => Promise<PluginListenerHandle>
+addListener(eventName: 'runtimeChange', listenerFunc: (event: RuntimeInfos) => void) => Promise<PluginListenerHandle>
 ```
 
 | Param              | Type                                                                      |
 | ------------------ | ------------------------------------------------------------------------- |
-| **`eventName`**    | <code>'runTimeChange'</code>                                              |
-| **`listenerFunc`** | <code>(event: <a href="#runtimeinfos">RunTimeInfos</a>) =&gt; void</code> |
+| **`eventName`**    | <code>'runtimeChange'</code>                                              |
+| **`listenerFunc`** | <code>(event: <a href="#runtimeinfos">RuntimeInfos</a>) =&gt; void</code> |
 
 **Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt;</code>
 
@@ -73,26 +138,46 @@ removeAllListeners() => Promise<void>
 ### Interfaces
 
 
-#### SoftWareInfos
+#### SoftwareInfos
 
-| Prop             | Type                |
-| ---------------- | ------------------- |
-| **`sdkVersion`** | <code>number</code> |
+| Prop                    | Type                  |
+| ----------------------- | --------------------- |
+| **`osName`**            | <code>string</code>   |
+| **`osVersion`**         | <code>string</code>   |
+| **`brandName`**         | <code>string</code>   |
+| **`sdkVersion`**        | <code>number</code>   |
+| **`sdkName`**           | <code>string</code>   |
+| **`securityPatch`**     | <code>string</code>   |
+| **`uiVersion`**         | <code>string</code>   |
+| **`deviceID`**          | <code>string</code>   |
+| **`boardName`**         | <code>string</code>   |
+| **`bootloaderVersion`** | <code>string</code>   |
+| **`supportedABIs`**     | <code>string[]</code> |
 
 
-#### HardWareInfos
+#### HardwareInfos
 
-| Prop      | Type                |
-| --------- | ------------------- |
-| **`cpu`** | <code>number</code> |
+| Prop                | Type                            |
+| ------------------- | ------------------------------- |
+| **`modelID`**       | <code>string</code>             |
+| **`modelCodeName`** | <code>string</code>             |
+| **`cpuModel`**      | <code>string</code>             |
+| **`cpuCores`**      | <code>[number, number][]</code> |
+| **`totalSD`**       | <code>number</code>             |
+| **`totalHDD`**      | <code>number</code>             |
+| **`totalRAM`**      | <code>number</code>             |
+| **`totalCores`**    | <code>number</code>             |
+| **`manufacturer`**  | <code>string</code>             |
+| **`features`**      | <code>Features[]</code>         |
 
 
-#### RunTimeInfos
+#### RuntimeInfos
 
-| Prop      | Type                |
-| --------- | ------------------- |
-| **`ram`** | <code>number</code> |
-| **`hdd`** | <code>number</code> |
+| Prop          | Type                |
+| ------------- | ------------------- |
+| **`usedRAM`** | <code>number</code> |
+| **`usedHDD`** | <code>number</code> |
+| **`usedSD`**  | <code>number</code> |
 
 
 #### PluginListenerHandle
@@ -107,6 +192,11 @@ removeAllListeners() => Promise<void>
 
 #### SystemInformations
 
-<code><a href="#softwareinfos">SoftWareInfos</a> & <a href="#hardwareinfos">HardWareInfos</a> & <a href="#runtimeinfos">RunTimeInfos</a></code>
+<code><a href="#softwareinfos">SoftwareInfos</a> & <a href="#hardwareinfos">HardwareInfos</a> & <a href="#runtimeinfos">RuntimeInfos</a></code>
+
+
+#### Features
+
+<code>'bluetooth' | 'bluetoothLowEnergy' | 'microphone' | 'speaker' | 'nfc' | 'camera' | 'gamepad' | 'gps' | 'touchscreen' | 'wifi' | 'fingerprint' | 'face' | 'ethernet'</code>
 
 </docgen-api>
