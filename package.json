@@ -1,7 +1,7 @@
 {
   "name": "@danyalwe/capacitor-systeminfo",
-  "version": "0.0.1",
-  "description": "Capacitor plugin to get access to every info about the device software and hardware",
+  "version": "0.0.0",
+  "description": "Get access to every info about the device software and hardware!",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -25,7 +25,16 @@
   "keywords": [
     "capacitor",
     "plugin",
-    "native"
+    "native",
+    "system",
+    "info",
+    "cpu",
+    "ram",
+    "hdd",
+    "web",
+    "android",
+    "ios",
+    "ionic"
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
@@ -60,7 +69,7 @@
     "rimraf": "^5.0.1",
     "rollup": "^3.28.1",
     "swiftlint": "^1.0.2",
-    "typescript": "^5.1.6"
+    "typescript": "~5.1.6"
   },
   "peerDependencies": {
     "@capacitor/core": "^5.0.0"
