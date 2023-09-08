@@ -1,19 +1,19 @@
 import type { PluginListenerHandle } from '@capacitor/core';
 
 export interface RunTimeInfos {
-  ram: number
-  hdd: number
+  ram: number;
+  hdd: number;
 }
 
 export interface SoftWareInfos {
-  sdkVersion: number
+  sdkVersion: number;
 }
 
 export interface HardWareInfos {
-  cpu: number
+  cpu: number;
 }
 
-export type SystemInformations = SoftWareInfos & HardWareInfos & RunTimeInfos
+export type SystemInformations = SoftWareInfos & HardWareInfos & RunTimeInfos;
 
 export interface SystemInfoPlugin {
   start(): Promise<SystemInformations | undefined>;
