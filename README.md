@@ -1,4 +1,4 @@
-# @danyalwe/capacitor-systeminfo
+# Capacitor Plugin - SystemInfo
 
 Get access to every info about the device software and hardware!
 
