@@ -1,10 +1,12 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { SystemInfoPlugin } from './definitions';
+import type { SystemInfoPlugin, SystemInformations } from './definitions';
 
 export class SystemInfoWeb extends WebPlugin implements SystemInfoPlugin {
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
+  async start(): Promise<SystemInformations | undefined> {
+    throw new Error('Method not implemented.');
+  }
+  async stop(): Promise<void> {
+    throw new Error('Method not implemented.');
   }
 }
