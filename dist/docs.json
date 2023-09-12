@@ -1,0 +1,369 @@
+{
+  "api": {
+    "name": "SystemInfoPlugin",
+    "slug": "systeminfoplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "getInfos",
+        "signature": "() => Promise<SystemInformations>",
+        "parameters": [],
+        "returns": "Promise<SystemInformations>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "SystemInformations"
+        ],
+        "slug": "getinfos"
+      },
+      {
+        "name": "start",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "start"
+      },
+      {
+        "name": "stop",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "stop"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: 'runtimeChange', listenerFunc: (event: RuntimeInfos) => void) => Promise<PluginListenerHandle>",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "'runtimeChange'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "(event: RuntimeInfos) => void"
+          }
+        ],
+        "returns": "Promise<PluginListenerHandle>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "PluginListenerHandle",
+          "RuntimeInfos"
+        ],
+        "slug": "addlistenerruntimechange"
+      },
+      {
+        "name": "removeAllListeners",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "removealllisteners"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "SoftwareInfos",
+      "slug": "softwareinfos",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "osName",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "osVersion",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "brandName",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "sdkVersion",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "sdkName",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "securityPatch",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "uiVersion",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "deviceID",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "boardName",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "bootloaderVersion",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "supportedABIs",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string[] | undefined"
+        }
+      ]
+    },
+    {
+      "name": "HardwareInfos",
+      "slug": "hardwareinfos",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "modelID",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "modelCodeName",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "cpuModel",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "cpuCores",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "[number, number][] | undefined"
+        },
+        {
+          "name": "totalSD",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "totalHDD",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number"
+        },
+        {
+          "name": "totalRAM",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number"
+        },
+        {
+          "name": "totalCores",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number"
+        },
+        {
+          "name": "manufacturer",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "features",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "Features"
+          ],
+          "type": "Features[]"
+        }
+      ]
+    },
+    {
+      "name": "PluginListenerHandle",
+      "slug": "pluginlistenerhandle",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "remove",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "() => Promise<void>"
+        }
+      ]
+    },
+    {
+      "name": "RuntimeInfos",
+      "slug": "runtimeinfos",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "usedRAM",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "usedHDD",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "usedSD",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "typeAliases": [
+    {
+      "name": "SystemInformations",
+      "slug": "systeminformations",
+      "docs": "",
+      "types": [
+        {
+          "text": "SoftwareInfos & HardwareInfos",
+          "complexTypes": [
+            "SoftwareInfos",
+            "HardwareInfos"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Features",
+      "slug": "features",
+      "docs": "",
+      "types": [
+        {
+          "text": "'bluetooth'",
+          "complexTypes": []
+        },
+        {
+          "text": "'bluetoothLowEnergy'",
+          "complexTypes": []
+        },
+        {
+          "text": "'microphone'",
+          "complexTypes": []
+        },
+        {
+          "text": "'speaker'",
+          "complexTypes": []
+        },
+        {
+          "text": "'nfc'",
+          "complexTypes": []
+        },
+        {
+          "text": "'camera'",
+          "complexTypes": []
+        },
+        {
+          "text": "'gamepad'",
+          "complexTypes": []
+        },
+        {
+          "text": "'gps'",
+          "complexTypes": []
+        },
+        {
+          "text": "'touchscreen'",
+          "complexTypes": []
+        },
+        {
+          "text": "'wifi'",
+          "complexTypes": []
+        },
+        {
+          "text": "'fingerprint'",
+          "complexTypes": []
+        },
+        {
+          "text": "'face'",
+          "complexTypes": []
+        },
+        {
+          "text": "'ethernet'",
+          "complexTypes": []
+        }
+      ]
+    }
+  ],
+  "pluginConfigs": []
+}

@@ -4,7 +4,7 @@ export interface RuntimeInfos {
   usedRAM?: number;
   usedHDD?: number;
   usedSD?: number;
-  //usedCPU: number;
+  //usedCPU?: number;
 }
 
 export interface SoftwareInfos {
@@ -49,7 +49,7 @@ export interface HardwareInfos {
   features: Features[];
 }
 
-export type SystemInformations = SoftwareInfos & HardwareInfos & RuntimeInfos;
+export type SystemInformations = SoftwareInfos & HardwareInfos;
 
 export interface SystemInfoPlugin {
   getInfos(): Promise<SystemInformations>;

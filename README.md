@@ -171,6 +171,13 @@ removeAllListeners() => Promise<void>
 | **`features`**      | <code>Features[]</code>         |
 
 
+#### PluginListenerHandle
+
+| Prop         | Type                                      |
+| ------------ | ----------------------------------------- |
+| **`remove`** | <code>() =&gt; Promise&lt;void&gt;</code> |
+
+
 #### RuntimeInfos
 
 | Prop          | Type                |
@@ -180,19 +187,12 @@ removeAllListeners() => Promise<void>
 | **`usedSD`**  | <code>number</code> |
 
 
-#### PluginListenerHandle
-
-| Prop         | Type                                      |
-| ------------ | ----------------------------------------- |
-| **`remove`** | <code>() =&gt; Promise&lt;void&gt;</code> |
-
-
 ### Type Aliases
 
 
 #### SystemInformations
 
-<code><a href="#softwareinfos">SoftwareInfos</a> & <a href="#hardwareinfos">HardwareInfos</a> & <a href="#runtimeinfos">RuntimeInfos</a></code>
+<code><a href="#softwareinfos">SoftwareInfos</a> & <a href="#hardwareinfos">HardwareInfos</a></code>
 
 
 #### Features
