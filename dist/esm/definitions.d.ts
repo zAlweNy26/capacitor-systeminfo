@@ -30,7 +30,7 @@ export interface HardwareInfos {
     manufacturer: string;
     features: Features[];
 }
-export type SystemInformations = SoftwareInfos & HardwareInfos & RuntimeInfos;
+export type SystemInformations = SoftwareInfos & HardwareInfos;
 export interface SystemInfoPlugin {
     getInfos(): Promise<SystemInformations>;
     start(): Promise<void>;
