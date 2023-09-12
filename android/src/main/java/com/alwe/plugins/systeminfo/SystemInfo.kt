@@ -38,15 +38,15 @@ class SystemInfo(
         val content = JSObject()
 
         val ram = SystemProperties.getMemoryInfo(context)
-        val usedRAM = toGiga(ram.totalMem - ram.availMem, true)
+        val usedRAM = (ram.totalMem - ram.availMem).toGiga(true)
         content.put("usedRAM", usedRAM)
 
         val hdd = SystemProperties.getStorageSpace(Environment.getDataDirectory())
-        val usedHDD = toGiga(hdd.second - hdd.first, true)
+        val usedHDD = (hdd.second - hdd.first).toGiga(true)
         content.put("usedHDD", usedHDD)
 
         val sd = SystemProperties.getStorageSpace(Environment.getExternalStorageDirectory())
-        val usedSD = toGiga(sd.second - sd.first, true)
+        val usedSD = (sd.second - sd.first).toGiga(true)
         content.put("usedSD", usedSD)
 
         //val usedCPU = 0
@@ -67,23 +67,23 @@ class SystemInfo(
         content.put("osName", "Android")
         content.put("osVersion", Build.VERSION.RELEASE)
         content.put("sdkVersion", Build.VERSION.SDK_INT)
-        content.put("sdkName", Build.VERSION.CODENAME)
+        content.put("sdkName", getCodeName(Build.VERSION.SDK_INT))
         content.put("securityPatch", securityPatch)
         content.put("uiVersion", Build.VERSION.INCREMENTAL)
         content.put("deviceID", Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID))
-        content.put("brandName", Build.BRAND)
-        content.put("boardName", Build.BOARD)
-        content.put("bootloaderVersion", Build.BOOTLOADER)
+        content.put("brandName", Build.BRAND.toCapitalized())
+        content.put("boardName", Build.BOARD.toCapitalized())
+        content.put("bootloaderVersion", Build.BOOTLOADER.toCapitalized())
         content.put("supportedABIs", JSArray(Build.SUPPORTED_ABIS))
 
         // Hardware Informations
         content.put("manufacturer", Build.MANUFACTURER)
         content.put("modelID", Build.MODEL)
-        content.put("modelCodeName", Build.DEVICE)
+        content.put("modelCodeName", Build.DEVICE.toCapitalized())
         content.put("cpuModel", SystemProperties.getCPUModel())
-        content.put("totalCores", Runtime.getRuntime().availableProcessors())
-        content.put("cpuCores", JSArray(SystemProperties.getCPUInfo(InfoCPU.MAX_FREQUENCY)))
-        content.put("totalRAM", SystemProperties.getMemoryInfo(context).totalMem)
+        content.put("cpuCores", JSArray(SystemProperties.getCPUInfo(InfoCPU.MAX_FREQUENCY).map { JSArray(it.toList()) }))
+        content.put("totalCores", SystemProperties.getNumberOfCores())
+        content.put("totalRAM", (SystemProperties.getMemoryInfo(context).totalMem).toGiga(true))
         content.put("totalHDD", SystemProperties.getStorageSpace(Environment.getDataDirectory()).second)
         content.put("totalSD", SystemProperties.getStorageSpace(Environment.getExternalStorageDirectory()).second)
 

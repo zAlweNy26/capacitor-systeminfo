@@ -26,7 +26,27 @@ val featuresMap = mapOf(
     PackageManager.FEATURE_ETHERNET to "ethernet"
 )
 
-fun toGiga(base: Number, isByte: Boolean = false): Double {
+fun Number.toGiga(isByte: Boolean = false): Double {
     val giga = (if (isByte) 1024.0 else 1000.0).pow(3.0)
-    return ((base.toDouble() / giga) * 100.0).roundToInt() / 100.0
+    return ((this.toDouble() / giga) * 100.0).roundToInt() / 100.0
 }
+
+fun getCodeName(sdk: Int): String {
+    return when {
+        sdk >= 34 -> "Upside Down Cake"
+        sdk >= 33 -> "Tiramisu"
+        sdk >= 31 -> "Snow Cone"
+        sdk >= 30 -> "Red Velvet Cake"
+        sdk >= 29 -> "Quince Tart"
+        sdk >= 28 -> "Pie"
+        sdk >= 26 -> "Oreo"
+        sdk >= 24 -> "Nougat"
+        sdk >= 23 -> "Marshmallow"
+        sdk >= 21 -> "Lollipop"
+        else -> "Unknown"
+    }
+}
+
+fun String.toSafeDouble() = try { this.toDouble() } catch (_: Exception) { 0.0 }
+
+fun String.toCapitalized() = this.lowercase().replaceFirstChar { it.titlecase() }
