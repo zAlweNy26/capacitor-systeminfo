@@ -7,7 +7,7 @@ export default {
       name: 'capacitorSystemInfo',
       globals: {
         '@capacitor/core': 'capacitorExports',
-        'platform': 'platformExports'
+        platform: 'platformExports',
       },
       sourcemap: true,
       inlineDynamicImports: true,

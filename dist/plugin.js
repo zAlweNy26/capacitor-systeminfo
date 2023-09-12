@@ -60,5 +60,5 @@ var capacitorSystemInfo = (function (exports, core, platform) {
 
     return exports;
 
-})({}, capacitorExports, platform);
+})({}, capacitorExports, platformExports);
 //# sourceMappingURL=plugin.js.map
