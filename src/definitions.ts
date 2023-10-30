@@ -19,7 +19,6 @@ export interface RuntimeInfos {
   //usedCPU?: number;
 }
 
-
 /**
  * Represents software information about a device.
  */
