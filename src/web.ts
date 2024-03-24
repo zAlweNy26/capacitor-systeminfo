@@ -1,4 +1,3 @@
-import type { ListenerCallback, PluginListenerHandle } from '@capacitor/core';
 import { WebPlugin } from '@capacitor/core';
 import platform from 'platform';
 
@@ -38,15 +37,10 @@ export class SystemInfoWeb extends WebPlugin implements SystemInfoPlugin {
   }
 
   async start(): Promise<void> {
-    this.unavailable('Listener not available in browser environment');
+    throw this.unavailable('Listener not available in browser environment');
   }
 
   async stop(): Promise<void> {
-    this.unavailable('Listener not available in browser environment');
-  }
-
-  addListener(eventName: string, listenerFunc: ListenerCallback): Promise<PluginListenerHandle> & PluginListenerHandle {
-    this.unavailable('Listener not available in browser environment');
-    return super.addListener(eventName, listenerFunc);
+    throw this.unavailable('Listener not available in browser environment');
   }
 }
