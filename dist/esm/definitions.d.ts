@@ -1,24 +1,14 @@
 import type { PluginListenerHandle } from '@capacitor/core';
-/**
- * Interface for runtime information.
- */
+/** Interface for runtime information. */
 export interface RuntimeInfos {
-    /**
-     * The amount of used RAM in bytes.
-     */
+    /** The amount of used RAM in bytes. */
     usedRAM?: number;
-    /**
-     * The amount of used HDD in bytes.
-     */
+    /** The amount of used HDD in bytes. */
     usedHDD?: number;
-    /**
-     * The amount of used SD card storage in bytes.
-     */
+    /** The amount of used SD card storage in bytes. */
     usedSD?: number;
 }
-/**
- * Represents software information about a device.
- */
+/** Represents software information about a device. */
 export interface SoftwareInfos {
     /** The name of the operating system. */
     osName: string;
@@ -43,9 +33,7 @@ export interface SoftwareInfos {
     /** The list of supported ABIs (if applicable). */
     supportedABIs?: string[];
 }
-/**
- * Represents the available features that can be queried using the Capacitor System Info plugin.
- */
+/** Represents the available features that can be queried using the Capacitor System Info plugin. */
 export type Features = 'bluetooth' | 'bluetoothLowEnergy' | 'microphone' | 'speaker' | 'nfc' | 'camera' | 'gamepad' | 'gps' | 'touchscreen' | 'wifi' | 'fingerprint' | 'face' | 'ethernet';
 /**
  * Represents hardware information of a device.
@@ -72,39 +60,32 @@ export interface HardwareInfos {
     /** The features supported by the device. */
     features: Features[];
 }
-/**
- * Represents a collection of system information, including both software and hardware information.
- */
+/** Represents a collection of system information, including both software and hardware information. */
 export type SystemInformations = SoftwareInfos & HardwareInfos;
-/**
- * Interface for the System Info plugin.
- */
+/** Interface for the System Info plugin */
 export interface SystemInfoPlugin {
     /**
      * Returns a Promise that resolves with an object containing system information.
-     * @returns Promise<SystemInformations>
+     * @returns SystemInformations
      */
     getInfos(): Promise<SystemInformations>;
     /**
      * Starts listening for system information changes.
-     * @returns Promise<void>
      */
     start(): Promise<void>;
     /**
      * Stops listening for system information changes.
-     * @returns Promise<void>
      */
     stop(): Promise<void>;
     /**
      * Adds a listener for the 'runtimeChange' event.
      * @param eventName - The name of the event to listen for.
      * @param listenerFunc - The function to call when the event is triggered.
-     * @returns Promise<PluginListenerHandle>
+     * @returns PluginListenerHandle
      */
     addListener(eventName: 'runtimeChange', listenerFunc: (event: RuntimeInfos) => void): Promise<PluginListenerHandle>;
     /**
      * Removes all event listeners.
-     * @returns Promise<void>
      */
     removeAllListeners(): Promise<void>;
 }
