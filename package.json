@@ -1,6 +1,6 @@
 {
   "name": "@danyalwe/capacitor-systeminfo",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Get access to every info about the device software and hardware!",
   "main": "dist/plugin.cjs.js",
   "module": "dist/esm/index.js",
