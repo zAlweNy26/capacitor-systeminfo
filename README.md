@@ -15,7 +15,6 @@ npx cap sync
 
 ## Todos
 
-- [x] Improve documentation, add JSDoc strings
 - [ ] Add support for iOS
 - [ ] Add CPU usage
 
@@ -81,11 +80,15 @@ npx cap sync
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
+Interface for the System Info plugin
+
 ### getInfos()
 
 ```typescript
 getInfos() => Promise<SystemInformations>
 ```
+
+Returns a Promise that resolves with an object containing system information.
 
 **Returns:** <code>Promise&lt;<a href="#systeminformations">SystemInformations</a>&gt;</code>
 
@@ -98,6 +101,8 @@ getInfos() => Promise<SystemInformations>
 start() => Promise<void>
 ```
 
+Starts listening for system information changes.
+
 --------------------
 
 
@@ -106,6 +111,8 @@ start() => Promise<void>
 ```typescript
 stop() => Promise<void>
 ```
+
+Stops listening for system information changes.
 
 --------------------
 
@@ -116,10 +123,12 @@ stop() => Promise<void>
 addListener(eventName: 'runtimeChange', listenerFunc: (event: RuntimeInfos) => void) => Promise<PluginListenerHandle>
 ```
 
-| Param              | Type                                                                      |
-| ------------------ | ------------------------------------------------------------------------- |
-| **`eventName`**    | <code>'runtimeChange'</code>                                              |
-| **`listenerFunc`** | <code>(event: <a href="#runtimeinfos">RuntimeInfos</a>) =&gt; void</code> |
+Adds a listener for the 'runtimeChange' event.
+
+| Param              | Type                                                                      | Description                                         |
+| ------------------ | ------------------------------------------------------------------------- | --------------------------------------------------- |
+| **`eventName`**    | <code>'runtimeChange'</code>                                              | - The name of the event to listen for.              |
+| **`listenerFunc`** | <code>(event: <a href="#runtimeinfos">RuntimeInfos</a>) =&gt; void</code> | - The function to call when the event is triggered. |
 
 **Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt;</code>
 
@@ -132,6 +141,8 @@ addListener(eventName: 'runtimeChange', listenerFunc: (event: RuntimeInfos) => v
 removeAllListeners() => Promise<void>
 ```
 
+Removes all event listeners.
+
 --------------------
 
 
@@ -140,35 +151,39 @@ removeAllListeners() => Promise<void>
 
 #### SoftwareInfos
 
-| Prop                    | Type                  |
-| ----------------------- | --------------------- |
-| **`osName`**            | <code>string</code>   |
-| **`osVersion`**         | <code>string</code>   |
-| **`brandName`**         | <code>string</code>   |
-| **`sdkVersion`**        | <code>number</code>   |
-| **`sdkName`**           | <code>string</code>   |
-| **`securityPatch`**     | <code>string</code>   |
-| **`uiVersion`**         | <code>string</code>   |
-| **`deviceID`**          | <code>string</code>   |
-| **`boardName`**         | <code>string</code>   |
-| **`bootloaderVersion`** | <code>string</code>   |
-| **`supportedABIs`**     | <code>string[]</code> |
+Represents software information about a device.
+
+| Prop                    | Type                  | Description                                          |
+| ----------------------- | --------------------- | ---------------------------------------------------- |
+| **`osName`**            | <code>string</code>   | The name of the operating system.                    |
+| **`osVersion`**         | <code>string</code>   | The version of the operating system.                 |
+| **`brandName`**         | <code>string</code>   | The name of the device brand.                        |
+| **`sdkVersion`**        | <code>number</code>   | The version of the SDK (if applicable).              |
+| **`sdkName`**           | <code>string</code>   | The name of the SDK (if applicable).                 |
+| **`securityPatch`**     | <code>string</code>   | The security patch level (if applicable).            |
+| **`uiVersion`**         | <code>string</code>   | The version of the UI (if applicable).               |
+| **`deviceID`**          | <code>string</code>   | The unique identifier of the device (if applicable). |
+| **`boardName`**         | <code>string</code>   | The name of the device board (if applicable).        |
+| **`bootloaderVersion`** | <code>string</code>   | The version of the bootloader (if applicable).       |
+| **`supportedABIs`**     | <code>string[]</code> | The list of supported ABIs (if applicable).          |
 
 
 #### HardwareInfos
 
-| Prop                | Type                            |
-| ------------------- | ------------------------------- |
-| **`modelID`**       | <code>string</code>             |
-| **`modelCodeName`** | <code>string</code>             |
-| **`cpuModel`**      | <code>string</code>             |
-| **`cpuCores`**      | <code>[number, number][]</code> |
-| **`totalSD`**       | <code>number</code>             |
-| **`totalHDD`**      | <code>number</code>             |
-| **`totalRAM`**      | <code>number</code>             |
-| **`totalCores`**    | <code>number</code>             |
-| **`manufacturer`**  | <code>string</code>             |
-| **`features`**      | <code>Features[]</code>         |
+Represents hardware information of a device.
+
+| Prop                | Type                            | Description                                 |
+| ------------------- | ------------------------------- | ------------------------------------------- |
+| **`modelID`**       | <code>string</code>             | The model ID of the device.                 |
+| **`modelCodeName`** | <code>string</code>             | The code name of the device model.          |
+| **`cpuModel`**      | <code>string</code>             | The model of the CPU.                       |
+| **`cpuCores`**      | <code>[number, number][]</code> | The number of cores and threads of the CPU. |
+| **`totalSD`**       | <code>number</code>             | The total size of the SD card in bytes.     |
+| **`totalHDD`**      | <code>number</code>             | The total size of the HDD in bytes.         |
+| **`totalRAM`**      | <code>number</code>             | The total size of the RAM in bytes.         |
+| **`totalCores`**    | <code>number</code>             | The total number of cores in the CPU.       |
+| **`manufacturer`**  | <code>string</code>             | The manufacturer of the device.             |
+| **`features`**      | <code>Features[]</code>         | The features supported by the device.       |
 
 
 #### PluginListenerHandle
@@ -180,11 +195,13 @@ removeAllListeners() => Promise<void>
 
 #### RuntimeInfos
 
-| Prop          | Type                |
-| ------------- | ------------------- |
-| **`usedRAM`** | <code>number</code> |
-| **`usedHDD`** | <code>number</code> |
-| **`usedSD`**  | <code>number</code> |
+Interface for runtime information.
+
+| Prop          | Type                | Description                                  |
+| ------------- | ------------------- | -------------------------------------------- |
+| **`usedRAM`** | <code>number</code> | The amount of used RAM in bytes.             |
+| **`usedHDD`** | <code>number</code> | The amount of used HDD in bytes.             |
+| **`usedSD`**  | <code>number</code> | The amount of used SD card storage in bytes. |
 
 
 ### Type Aliases
@@ -192,10 +209,14 @@ removeAllListeners() => Promise<void>
 
 #### SystemInformations
 
+Represents a collection of system information, including both software and hardware information.
+
 <code><a href="#softwareinfos">SoftwareInfos</a> & <a href="#hardwareinfos">HardwareInfos</a></code>
 
 
 #### Features
+
+Represents the available features that can be queried using the Capacitor System Info plugin.
 
 <code>'bluetooth' | 'bluetoothLowEnergy' | 'microphone' | 'speaker' | 'nfc' | 'camera' | 'gamepad' | 'gps' | 'touchscreen' | 'wifi' | 'fingerprint' | 'face' | 'ethernet'</code>
 
