@@ -40,14 +40,10 @@ var capacitorSystemInfo = (function (exports, core, platform) {
             };
         }
         async start() {
-            this.unavailable('Listener not available in browser environment');
+            throw this.unavailable('Listener not available in browser environment');
         }
         async stop() {
-            this.unavailable('Listener not available in browser environment');
-        }
-        addListener(eventName, listenerFunc) {
-            this.unavailable('Listener not available in browser environment');
-            return super.addListener(eventName, listenerFunc);
+            throw this.unavailable('Listener not available in browser environment');
         }
     }
 
