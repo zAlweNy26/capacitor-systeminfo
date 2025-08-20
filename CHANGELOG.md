@@ -1,5 +1,12 @@
 # @danyalwe/capacitor-systeminfo
 
+## 0.0.4
+
+### Patch Changes
+
+- 46d4aa2: Update to Capacitor v7
+  Switch to pnpm
+
 ## 0.0.3
 
 ### Patch Changes
