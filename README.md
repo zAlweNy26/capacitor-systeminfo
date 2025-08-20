@@ -50,12 +50,14 @@ npx cap sync
 | **`features`**      | ✅      | ❌  | ✅  |
 | **`totalCores`**    | ✅      | ❌  | ✅  |
 | **`totalRAM`**      | ✅      | ❌  | ✅  |
-| **`totalHDD`**      | ✅      | ❌  | ✅  |
+| **`totalHDD`**      | ✅      | ❌  | ⚠️  |
 | **`totalSD`**       | ✅      | ❌  | ❌  |
 | **`modelID`**       | ✅      | ❌  | ❌  |
 | **`modelCodeName`** | ✅      | ❌  | ❌  |
 | **`cpuModel`**      | ✅      | ❌  | ❌  |
 | **`cpuCores`**      | ✅      | ❌  | ❌  |
+
+⚠️: Not real total, it's the available
 
 | RuntimeInfos  | Android | iOS | Web |
 | :------------ | :------ | :-- | :-- |
