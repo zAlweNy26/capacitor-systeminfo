@@ -1,5 +1,12 @@
 # @danyalwe/capacitor-systeminfo
 
+## 0.0.3
+
+### Patch Changes
+
+- dd5d695: Improve documentation
+  Update to Capacitor v6
+
 ## 0.0.2
 
 ### Patch Changes
