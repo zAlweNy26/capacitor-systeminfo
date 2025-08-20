@@ -1,8 +1,7 @@
 import { WebPlugin } from '@capacitor/core';
 import platform from 'platform';
 
-import { SystemInformations } from './definitions';
-import type { Features, SystemInfoPlugin } from './definitions';
+import type { SystemInformations, Features, SystemInfoPlugin } from './definitions';
 
 export class SystemInfoWeb extends WebPlugin implements SystemInfoPlugin {
   async getInfos(): Promise<SystemInformations> {
