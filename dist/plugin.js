@@ -25,7 +25,7 @@ var capacitorSystemInfo = (function (exports, core, platform) {
             if (devices.some((d) => d.kind === 'audioinput'))
                 features.push('microphone');
             const totalRAM = 'deviceMemory' in navigator ? navigator.deviceMemory : 0;
-            const estimate = 'storage' in navigator ? (_a = (await navigator.storage.estimate()).quota) !== null && _a !== void 0 ? _a : 0 : 0;
+            const estimate = 'storage' in navigator ? ((_a = (await navigator.storage.estimate()).quota) !== null && _a !== void 0 ? _a : 0) : 0;
             // Not real total, it's the available
             const totalHDD = parseInt((estimate / 1024 ** 3).toFixed(2));
             return {
@@ -56,5 +56,5 @@ var capacitorSystemInfo = (function (exports, core, platform) {
 
     return exports;
 
-})({}, capacitorExports, platformExports);
+})({}, capacitorExports, platform);
 //# sourceMappingURL=plugin.js.map

@@ -19,7 +19,7 @@ export class SystemInfoWeb extends WebPlugin implements SystemInfoPlugin {
 
     const totalRAM = 'deviceMemory' in navigator ? (navigator.deviceMemory as number) : 0;
 
-    const estimate = 'storage' in navigator ? (await navigator.storage.estimate()).quota ?? 0 : 0;
+    const estimate = 'storage' in navigator ? ((await navigator.storage.estimate()).quota ?? 0) : 0;
     // Not real total, it's the available
     const totalHDD = parseInt((estimate / 1024 ** 3).toFixed(2));
 
