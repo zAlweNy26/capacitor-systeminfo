@@ -1,8 +1,6 @@
 package com.alwe.plugins.systeminfo
 
 import android.content.pm.PackageManager
-import kotlin.math.pow
-import kotlin.math.roundToInt
 
 enum class InfoCPU(val info: String) {
     MIN_FREQUENCY("cpuinfo_min_freq"),
@@ -26,13 +24,10 @@ val featuresMap = mapOf(
     PackageManager.FEATURE_ETHERNET to "ethernet"
 )
 
-fun Number.toGiga(isByte: Boolean = false): Double {
-    val giga = (if (isByte) 1024.0 else 1000.0).pow(3.0)
-    return ((this.toDouble() / giga) * 100.0).roundToInt() / 100.0
-}
-
 fun getCodeName(sdk: Int): String {
     return when {
+        sdk >= 36 -> "Baklava"
+        sdk >= 35 -> "Vanilla Ice Cream"
         sdk >= 34 -> "Upside Down Cake"
         sdk >= 33 -> "Tiramisu"
         sdk >= 31 -> "Snow Cone"
@@ -42,7 +37,6 @@ fun getCodeName(sdk: Int): String {
         sdk >= 26 -> "Oreo"
         sdk >= 24 -> "Nougat"
         sdk >= 23 -> "Marshmallow"
-        sdk >= 21 -> "Lollipop"
         else -> "Unknown"
     }
 }

@@ -2,17 +2,6 @@
   "name": "@danyalwe/capacitor-systeminfo",
   "version": "0.0.4",
   "description": "Get access to every info about the device software and hardware!",
-  "main": "dist/plugin.cjs.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/esm/index.d.ts",
-  "unpkg": "dist/plugin.js",
-  "files": [
-    "android/src/main/",
-    "android/build.gradle",
-    "dist/",
-    "ios/Plugin/",
-    "SystemInfo.podspec"
-  ],
   "author": "zAlweNy26",
   "license": "MIT",
   "repository": {
@@ -36,56 +25,57 @@
     "ios",
     "ionic"
   ],
+  "main": "dist/plugin.cjs.js",
+  "module": "dist/esm/index.js",
+  "unpkg": "dist/plugin.js",
+  "types": "dist/esm/index.d.ts",
+  "files": [
+    "SystemInfo.podspec",
+    "android/build.gradle",
+    "android/src/main/",
+    "dist/",
+    "ios/Plugin/"
+  ],
   "scripts": {
-    "verify": "pnpm run verify:ios && pnpm run verify:android && pnpm run verify:web",
+    "verify": "pnpm run verify:web && pnpm run verify:android && pnpm run verify:ios",
     "verify:ios": "cd ios && pod install && xcodebuild -workspace Plugin.xcworkspace -scheme Plugin -destination generic/platform=iOS && cd ..",
-    "verify:android": "cd android && gradlew clean build test && cd ..",
+    "verify:android": "cd android && ./gradlew clean build test && cd ..",
     "verify:web": "pnpm run build",
-    "lint": "pnpm run eslint && pnpm run prettier --check && pnpm run swiftlint lint",
-    "fmt": "pnpm run eslint --fix && pnpm run prettier --write && pnpm run swiftlint --fix --format",
-    "eslint": "eslint . --ext ts",
-    "prettier": "prettier \"**/*.{css,html,ts,js}\"",
+    "lint": "eslint && pnpm run swiftlint lint",
+    "fmt": "eslint --fix && pnpm run swiftlint --fix --format",
     "swiftlint": "node-swiftlint",
     "docgen": "docgen --api SystemInfoPlugin --output-readme README.md --output-json dist/docs.json",
-    "build": "pnpm run clean && tsc && rollup -c rollup.config.mjs --bundleConfigAsCjs",
+    "build": "pnpm run clean && pnpm run docgen && tsc && rollup -c rollup.config.mjs",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
     "release": "pnpm run build && changeset publish"
   },
-  "dependencies": {
-    "platform": "^1.3.6"
-  },
-  "devDependencies": {
-    "@capacitor/android": "^7.0.0",
-    "@capacitor/core": "^7.0.0",
-    "@capacitor/docgen": "^0.3.0",
-    "@capacitor/ios": "^7.0.0",
-    "@changesets/cli": "^2.26.2",
-    "@ionic/eslint-config": "^0.4.0",
-    "@ionic/prettier-config": "^4.0.0",
-    "@ionic/swiftlint-config": "^2.0.0",
-    "@types/platform": "^1.3.4",
-    "@typescript-eslint/eslint-plugin": "^5.62.0",
-    "eslint": "^8.57.0",
-    "prettier": "^3.4.2",
-    "prettier-plugin-java": "^2.6.6",
-    "prettier-plugin-kotlin": "^2.1.0",
-    "rimraf": "^6.0.1",
-    "rollup": "^4.30.1",
-    "swiftlint": "^2.0.0",
-    "typescript": "~5.1.6"
-  },
   "peerDependencies": {
     "@capacitor/core": ">=7.0.0"
+  },
+  "dependencies": {
+    "platform": "^1.3.6"
   },
   "publishConfig": {
     "access": "public"
   },
-  "prettier": "@ionic/prettier-config",
-  "swiftlint": "@ionic/swiftlint-config",
-  "eslintConfig": {
-    "extends": "@ionic/eslint-config/recommended"
+  "devDependencies": {
+    "@antfu/eslint-config": "^5.2.1",
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "@capacitor/docgen": "^0.3.0",
+    "@capacitor/ios": "^7.4.3",
+    "@changesets/cli": "^2.29.6",
+    "@ionic/swiftlint-config": "^2.0.0",
+    "@types/platform": "^1.3.6",
+    "changelogen": "^0.6.2",
+    "eslint": "^9.34.0",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.50.0",
+    "swiftlint": "^2.0.0",
+    "typescript": "~5.9.2"
   },
+  "swiftlint": "@ionic/swiftlint-config",
   "capacitor": {
     "ios": {
       "src": "ios"
