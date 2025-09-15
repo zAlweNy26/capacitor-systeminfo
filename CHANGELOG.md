@@ -1,5 +1,11 @@
 # @danyalwe/capacitor-systeminfo
 
+## 1.0.0
+
+### Major Changes
+
+- 149bdd4: Refactor plugin and add new properties
+
 ## 0.0.4
 
 ### Patch Changes
